@@ -3,9 +3,14 @@
  */
 package crowd_simulation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import processing.core.PApplet;
 
 public class App extends PApplet {
+    List<Agent> agents;
+
     @Override
     public void settings() {
         size(800, 600);
@@ -14,12 +19,26 @@ public class App extends PApplet {
     @Override
     public void setup() {
         background(255);
+        agents = new ArrayList<>();
+        int agentCount = 10;
+        double centerXPos = width / 2;
+        double centerYPos = height / 2;
+        int radius = 200;
+        for (int i = 0; i < agentCount; i++) {
+            double angle = (i * (Math.TAU / agentCount));
+            double x = centerXPos + radius * Math.cos(angle);
+            double y = centerYPos + radius * Math.sin(angle);
+            agents.add(new Agent(this, x, y, 1, (angle + Math.PI)));
+        }
     }
 
     @Override
     public void draw() {
-        fill(255, 0, 0);
-        ellipse(mouseX, mouseY, 20, 20);
+        background(255);
+        for (Agent agent : agents) {
+            agent.draw();
+            agent.move();
+        }
     }
 
     public static void main(String[] args) {
