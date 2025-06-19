@@ -3,12 +3,26 @@
  */
 package crowd_simulation;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
+import processing.core.PApplet;
+
+public class App extends PApplet {
+    @Override
+    public void settings() {
+        size(800, 600);
+    }
+
+    @Override
+    public void setup() {
+        background(255);
+    }
+
+    @Override
+    public void draw() {
+        fill(255, 0, 0);
+        ellipse(mouseX, mouseY, 20, 20);
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        PApplet.main("crowd_simulation.App");
     }
 }
