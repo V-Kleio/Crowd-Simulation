@@ -25,6 +25,7 @@ dependencies {
     implementation(libs.guava)
 
     implementation(files("../lib/core.jar"))
+    implementation(files("../lib/LazyGui.jar"))
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
